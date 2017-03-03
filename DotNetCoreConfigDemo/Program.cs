@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
+using System.Collections.Generic;
 
 namespace DotNetCoreConfigDemo
 {
@@ -6,7 +8,11 @@ namespace DotNetCoreConfigDemo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var myConfig = new MyConfig();
+            new ConfigurationBuilder()
+                .AddJsonFile("appsetting.json")
+                .Build()
+                .Bind(myConfig);
         }
     }
 }
